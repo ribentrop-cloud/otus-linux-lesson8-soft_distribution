@@ -1,9 +1,7 @@
 ## Описание решения.
 ### Cоздать свой RPM
-Был создан nginx с поддержкой ssl по методичке.
+Был собран nginx с поддержкой ssl по методичке.  
 Был написан скрипт для provision секции для Vagrant _build-nginx-with-ssl.sh_
-__Проверка__
-Для проверки была написан provision секция для Vagrant
 ```sh
 sudo yum install -y   redhat-lsb-core   wget   rpmdevtools   rpm-build   createrepo   yum-utils gcc
 sudo wget https://nginx.org/packages/centos/7/SRPMS/nginx-1.14.1-1.el7_4.ngx.src.rpm
@@ -15,10 +13,19 @@ sudo sed  -i -E  "s/--with-debug/--with-openssl=\/home\/vagrant\/openssl-1.1.1d 
 sudo rpmbuild -bb /root/rpmbuild/SPECS/nginx.spec
 sudo yum localinstall -y /root/rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm
 sudo systemctl start nginx
+```
+__Проверка__
+1. Vagrant up
+2. Как поднимется машина, для проверки можно набрать:
+```sh
 sudo systemctl status nginx
 ```
+А так же 
+```sh
+sudo cat /root/rpmbuild/SPECS/nginx.spec | grep with-openssl
+```
 ### Cоздать свой репо и разместить там свой RPM
-Был реализован репозиторий по методичке.
+Был реализован репозиторий по методичке.  
 Был написан скрипт для provision секции для Vagrant _make-your-own-local-repo.sh_
 ```sh
 #!/bin/bash
