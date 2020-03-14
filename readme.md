@@ -26,7 +26,7 @@ sudo cat /root/rpmbuild/SPECS/nginx.spec | grep with-openssl
 ```
 ### Cоздать свой репо и разместить там свой RPM
 Был реализован репозиторий по методичке.  
-Был написан скрипт для provision секции для Vagrant _make-your-own-local-repo.sh_
+Был написан скрипт для provision секции для Vagrant: _make-your-own-local-repo.sh_
 ```sh
 #!/bin/bash
 sudo mkdir /usr/share/nginx/html/repo
